@@ -1,0 +1,18 @@
+Games::Tmx::Parser
+==================
+
+Parses TMX files from the tiled cwmapgame editor:
+
+http://www.mapeditor.org/
+
+Draw your maps in Tiled, then use this module to parse and build maps and
+waypoints for your game.
+
+requires:
+
+Not Implemented
+---------------
+
+- no support for base64 or compression of maps, uncheck the correct check boxes in Tiled before you save
+- no support for object layers
+
