@@ -1,7 +1,7 @@
 Games::Tmx::Parser
 ==================
 
-Parses TMX files from the tiled cwmapgame editor:
+Parses TMX files from the tiled mapgame editor:
 
 http://www.mapeditor.org/
 
