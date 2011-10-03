@@ -8,7 +8,11 @@ http://www.mapeditor.org/
 Draw your maps in Tiled, then use this module to parse and build maps and
 waypoints for your game.
 
-requires:
+Requires
+--------
+
+- Moose
+- XML::Twig
 
 Not Implemented
 ---------------
