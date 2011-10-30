@@ -40,6 +40,7 @@ my ($spawn, $leave) = ($spawn_cells[0], $leave_cells[0]);
 
 my ($cell, $dir, @cells);
 
+# start on spawn cell but from path layer not waypoints layer
 $cell = $path_layer->get_cell($spawn->xy);
 
 while (my $next = advance(\@cells, $cell, $dir)) {
