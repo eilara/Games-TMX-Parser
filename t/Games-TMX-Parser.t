@@ -3,10 +3,11 @@ use strict;
 use warnings;
 use FindBin qw($Bin);
 use Test::More;
+use File::Spec;
 use Games::TMX::Parser;
 
 my $parser = Games::TMX::Parser->new(
-    map_dir  => "$Bin/../eg",
+    map_dir  => File::Spec->catfile($Bin, '..', 'eg'),
     map_file => 'tower_defense.tmx',
 );
 

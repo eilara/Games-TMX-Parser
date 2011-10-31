@@ -108,9 +108,18 @@ in Tiled before you save.
 
 No support for object layers.
 
+=head1 DEVELOPMENT
+
+Send pull requests to:
+
+    https://github.com/eilara/Games-TMX-Parser
+
+
 =head1 AUTHOR
 
 Ran Eilam <eilara@cpan.org>
+
+A big hug to mst for namespacing help.
 
 =head1 COPYRIGHT AND LICENSE
 
@@ -125,13 +134,10 @@ at your option, any later version of Perl 5 you may have available.
 package Games::TMX::Parser;
 
 use Moose;
-use MooseX::Types::Moose qw(Str);
 use File::Spec;
 use XML::Twig;
 
-our $VERSION = "1.0";
-
-has [qw(map_dir map_file)] => (is => 'ro', isa => Str, required => 1);
+has [qw(map_dir map_file)] => (is => 'ro', isa => 'Str', required => 1);
 
 has map => (is => 'ro', lazy_build => 1, handles => [qw(get_layer)]);
 
@@ -204,7 +210,6 @@ sub get_tile  { shift->tiles_by_id->{pop()} }
 package Games::TMX::Parser::TileSet;
 
 use Moose;
-use MooseX::Types::Moose qw(Str);
 use List::MoreUtils qw(natatime);
 
 extends 'Games::TMX::Parser::MapElement';
@@ -261,12 +266,11 @@ sub _build_height      { shift->first_child('image')->att('height') }
 package Games::TMX::Parser::Tile;
 
 use Moose;
-use MooseX::Types::Moose qw(Int HashRef);
 
-has id      => (is => 'ro', isa => Int, required => 1);
+has id      => (is => 'ro', isa => 'Int', required => 1);
 has tileset => (is => 'ro', weak_ref => 1, required => 1);
 
-has properties => (is => 'ro', isa => HashRef, default => sub { {} });
+has properties => (is => 'ro', isa => 'HashRef', default => sub { {} });
 
 sub get_prop {
     my ($self, $name) = @_;
@@ -329,9 +333,8 @@ sub all_cells { return map { @$_ } @{ shift->rows } }
 package Games::TMX::Parser::Cell;
 
 use Moose;
-use MooseX::Types::Moose qw(Int);
 
-has [qw(x y)] => (is => 'ro', isa => Int, required => 1);
+has [qw(x y)] => (is => 'ro', isa => 'Int', required => 1);
 
 has tile => (is => 'ro');
 
