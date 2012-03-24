@@ -8,11 +8,41 @@ http://www.mapeditor.org/
 Draw your maps in Tiled, then use this module to parse and build maps and
 waypoints for your game.
 
+Provides a simple OO XML::Twig-like API for accessing every corner of the map
+object model.
+
+
+Usage
+-----
+
+In Tiled, draw your map and place properties as markers on special tiles you
+want to read in Perl. Then in your Perl game, read the map and use:
+
+    my @cells = $map->get_layer('layer_with_stuff')
+                    ->find_cells_with_property('my_special_tile_marker');
+ 
+To find your special cells (spawn points, enemy locations, etc.).
+
+Draw a layer by iteating over:
+
+    @{ $layer->rows };
+
+Which will give you an ARRAY ref of cells, one per column. Then you can find
+the tile of the cell using:
+
+    $cell->tile;
+
+And then access its properties, or cut the correct image from the tileset image file:
+
+    $tile->tileset->image;
+
+
 Requires
 --------
 
 - Moose
 - XML::Twig
+
 
 Not Implemented
 ---------------
